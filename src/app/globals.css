@@ -3,25 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-crimson: #A62447;
+  --color-burdeos: #73434F;
+  --color-crema: #E8DDD4;
+  --color-rosa: #BF9288;
+  --color-marron: #8C5858;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-marron);
+  background: #ffffff;
+  font-family: "Inter", sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-6 py-20 md:px-12 lg:px-20 lg:py-32;
+  }
+  .section-title {
+    @apply font-heading text-4xl md:text-5xl text-marron mb-4;
+  }
+  .section-subtitle {
+    @apply font-body text-lg text-rosa mb-12;
   }
 }
