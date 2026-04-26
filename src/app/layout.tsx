@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter, Italianno } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/content";
 
@@ -16,6 +16,13 @@ const inter = Inter({
   display: "swap",
 });
 
+const italianno = Italianno({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-script",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
@@ -29,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <body
-        className={`${cormorant.variable} ${inter.variable} antialiased`}
+        className={`${cormorant.variable} ${inter.variable} ${italianno.variable} antialiased`}
       >
         {children}
       </body>
