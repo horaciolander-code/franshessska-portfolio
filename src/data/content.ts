@@ -35,7 +35,7 @@ export const hero = {
     text: "Ver portfolio",
     href: "#portfolio",
   },
-  image: "/images/fotos/portada.webp",
+  image: "/images/fotos/portada_cutout.webp",
 };
 
 export const about = {
