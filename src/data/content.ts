@@ -181,22 +181,10 @@ export const material = {
   title: "Material de trabajo",
   subtitle: "Equipo profesional para producir contenido de calidad",
   items: [
-    {
-      icon: "phone",
-      label: "iPhone 15 Pro Max",
-    },
-    {
-      icon: "mic",
-      label: "Micrófonos",
-    },
-    {
-      icon: "tripod",
-      label: "Trípode profesional",
-    },
-    {
-      icon: "light",
-      label: "Luz LED",
-    },
+    { image: "/images/material/iphone.webp", label: "iPhone 15 Pro Max" },
+    { image: "/images/material/micros.webp", label: "Micrófonos" },
+    { image: "/images/material/tripode.webp", label: "Trípode profesional" },
+    { image: "/images/material/luz.webp", label: "Luz LED" },
   ],
 };
 
