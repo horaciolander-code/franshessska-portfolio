@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/data/content";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -16,9 +17,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Franshessska | Creadora de Contenido & Social Media Manager",
-  description:
-    "Portfolio profesional de Franshessska — creadora de contenido, editora de video y gestora de redes sociales con 5 anos de experiencia.",
+  title: siteConfig.title,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({

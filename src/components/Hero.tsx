@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { hero } from "@/data/content";
 
 export default function Hero() {
@@ -9,10 +10,13 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center pt-20">
         {/* Text */}
         <div className="order-2 md:order-1 text-center md:text-left">
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-marron mb-4">
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-marron mb-3 leading-[0.95]">
             {hero.name}
           </h1>
-          <p className="font-body text-lg md:text-xl text-rosa mb-8 max-w-lg mx-auto md:mx-0">
+          <p className="font-body text-sm md:text-base uppercase tracking-[0.25em] text-crimson mb-6">
+            {hero.role}
+          </p>
+          <p className="font-body text-lg md:text-xl text-rosa mb-10 max-w-lg mx-auto md:mx-0">
             {hero.tagline}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -31,22 +35,17 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Video placeholder */}
+        {/* Photo */}
         <div className="order-1 md:order-2 flex justify-center">
-          <div className="relative w-64 md:w-72 lg:w-80 aspect-[9/16] bg-burdeos rounded-3xl overflow-hidden shadow-2xl">
-            {/* TODO: cliente — reemplazar con video real de Google Drive */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-crema">
-              <svg
-                className="w-16 h-16 mb-4 opacity-60"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <span className="font-body text-sm opacity-60">
-                Video destacado
-              </span>
-            </div>
+          <div className="relative w-72 md:w-96 lg:w-[28rem] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl bg-white">
+            <Image
+              src={hero.image}
+              alt={hero.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 28rem, (min-width: 768px) 24rem, 18rem"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>

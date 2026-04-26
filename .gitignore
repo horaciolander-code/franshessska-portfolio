@@ -24,6 +24,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+
+# local helper scripts (assets pipeline)
+convert_videos.sh
+compress_piri.sh
+optimize_assets.sh
 
 # local env files
 .env*.local

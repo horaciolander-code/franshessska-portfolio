@@ -1,14 +1,20 @@
+import Image from "next/image";
 import { about } from "@/data/content";
 
 export default function About() {
   return (
     <section id="about" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-        {/* Photo placeholder */}
+        {/* Photo */}
         <div className="flex justify-center">
-          <div className="w-64 h-80 md:w-80 md:h-96 bg-rosa/30 rounded-2xl flex items-center justify-center shadow-lg">
-            {/* TODO: cliente — foto profesional */}
-            <span className="font-heading text-7xl text-crimson/40">F</span>
+          <div className="relative w-72 md:w-80 lg:w-96 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg bg-rosa/10">
+            <Image
+              src={about.image}
+              alt="Francesca Torres"
+              fill
+              sizes="(min-width: 1024px) 24rem, (min-width: 768px) 20rem, 18rem"
+              className="object-cover"
+            />
           </div>
         </div>
 

@@ -11,7 +11,7 @@ export default function Footer() {
               {siteConfig.name}
             </p>
             <p className="font-body text-sm text-crema/60">
-              Creadora de contenido & Social Media Manager
+              Content creator & Social Media Manager
             </p>
           </div>
 

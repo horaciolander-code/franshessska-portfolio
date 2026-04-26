@@ -73,7 +73,7 @@ export default function Pricing() {
         <p className="font-body text-sm text-rosa mt-10">
           {pricing.customNote}{" "}
           <a href="#contact" className="text-crimson underline hover:text-burdeos">
-            Contactame
+            Contáctame
           </a>
         </p>
       </div>
