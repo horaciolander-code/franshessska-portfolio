@@ -15,7 +15,24 @@ export default function Hero() {
           </p>
 
           <h1 className="font-script text-burdeos leading-[0.85] mb-8 text-[5rem] sm:text-[6.5rem] md:text-[7rem] lg:text-[9.5rem]">
-            <span className="block">Francesca</span>
+            <span className="block relative">
+              {/* Mobile: nombre entero */}
+              <span className="md:hidden">Francesca</span>
+              {/* Desktop: "a" decorativa que se superpone a la foto */}
+              <span className="hidden md:inline">Francesc</span>
+              <span
+                aria-hidden
+                className="hidden md:inline-block absolute font-script text-crimson z-30 leading-none"
+                style={{
+                  top: "-0.05em",
+                  right: "-0.95em",
+                  fontSize: "1.55em",
+                  textShadow: "0 4px 18px rgba(166,36,71,0.25)",
+                }}
+              >
+                a
+              </span>
+            </span>
             <span className="block md:pl-12 lg:pl-20">Torres</span>
           </h1>
 
