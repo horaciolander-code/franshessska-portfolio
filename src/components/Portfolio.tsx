@@ -64,33 +64,44 @@ export default function Portfolio() {
               <button
                 key={i}
                 onClick={() => setModal({ kind: "video", ...v })}
-                className="group relative aspect-[9/16] bg-burdeos/10 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-lg transition-shadow"
+                className="group relative aspect-[9/19] mx-auto w-full max-w-[260px] cursor-pointer"
               >
-                <video
-                  src={v.src}
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play().catch(() => {})}
-                  onMouseLeave={(e) => {
-                    const vid = e.currentTarget as HTMLVideoElement;
-                    vid.pause();
-                    vid.currentTime = 0;
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-burdeos/90 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity">
-                  <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-                    <svg className="w-6 h-6 text-crimson ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+                {/* iPhone frame */}
+                <div className="absolute inset-0 bg-neutral-900 rounded-[2.2rem] md:rounded-[2.5rem] p-[6px] md:p-[8px] shadow-[0_10px_30px_-5px_rgba(0,0,0,0.35)] group-hover:shadow-[0_20px_45px_-5px_rgba(0,0,0,0.45)] transition-shadow">
+                  {/* Dynamic Island */}
+                  <span
+                    aria-hidden
+                    className="absolute top-[10px] md:top-[12px] left-1/2 -translate-x-1/2 w-[58px] md:w-[70px] h-[16px] md:h-[18px] bg-black rounded-full z-20"
+                  />
+                  {/* Inner screen */}
+                  <div className="relative w-full h-full bg-black rounded-[1.7rem] md:rounded-[2rem] overflow-hidden">
+                    <video
+                      src={v.src}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play().catch(() => {})}
+                      onMouseLeave={(e) => {
+                        const vid = e.currentTarget as HTMLVideoElement;
+                        vid.pause();
+                        vid.currentTime = 0;
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity">
+                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                        <svg className="w-5 h-5 md:w-6 md:h-6 text-crimson ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 px-3 pb-3 pt-6">
+                      <p className="font-body text-[0.7rem] md:text-xs text-white text-left line-clamp-2">
+                        {v.title}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-3">
-                  <p className="font-body text-xs text-white text-left line-clamp-2">
-                    {v.title}
-                  </p>
                 </div>
               </button>
             ))}
@@ -210,13 +221,19 @@ export default function Portfolio() {
             onClick={(e) => e.stopPropagation()}
           >
             {modal.kind === "video" ? (
-              <video
-                src={modal.src}
-                controls
-                autoPlay
-                playsInline
-                className="max-h-[90vh] max-w-[90vw] rounded-2xl shadow-2xl bg-black"
-              />
+              <div className="relative bg-neutral-900 rounded-[2.8rem] p-[10px] shadow-2xl mx-auto" style={{ height: "min(88vh, calc(90vw * 19 / 9))", aspectRatio: "9 / 19" }}>
+                <span
+                  aria-hidden
+                  className="absolute top-[14px] left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-full z-20"
+                />
+                <video
+                  src={modal.src}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-cover rounded-[2.2rem] bg-black"
+                />
+              </div>
             ) : (
               <div className="relative max-h-[90vh] max-w-[90vw]">
                 <img
