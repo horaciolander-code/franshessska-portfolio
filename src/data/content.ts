@@ -18,7 +18,6 @@ export const nav = {
     { text: "Portfolio", href: "#portfolio" },
     { text: "Material", href: "#material" },
     { text: "Skills", href: "#skills" },
-    { text: "Precios", href: "#pricing" },
     { text: "Contacto", href: "#contact" },
   ],
 };
@@ -282,7 +281,6 @@ export const footer = {
     { text: "Sobre mí", href: "#about" },
     { text: "Servicios", href: "#services" },
     { text: "Portfolio", href: "#portfolio" },
-    { text: "Precios", href: "#pricing" },
     { text: "Contacto", href: "#contact" },
   ],
 };

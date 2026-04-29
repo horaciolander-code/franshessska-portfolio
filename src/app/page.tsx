@@ -6,7 +6,6 @@ import Portfolio from "@/components/Portfolio";
 import Material from "@/components/Material";
 import Skills from "@/components/Skills";
 import Offer from "@/components/Offer";
-import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -22,7 +21,6 @@ export default function Home() {
         <Material />
         <Skills />
         <Offer />
-        <Pricing />
         <Contact />
       </main>
       <Footer />
