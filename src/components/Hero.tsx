@@ -5,60 +5,85 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col bg-crema overflow-hidden pt-24 md:pt-28"
+      className="relative min-h-screen flex flex-col bg-crema overflow-hidden pt-20 md:pt-24"
     >
       {/* Accessibility */}
       <h1 className="sr-only">Francesca Torres</h1>
 
       {/* Top-left role */}
-      <p className="absolute top-24 md:top-28 left-6 md:left-12 lg:left-20 z-30 font-body text-[0.7rem] md:text-xs uppercase tracking-[0.35em] text-marron max-w-[60%] md:max-w-none">
+      <p className="absolute top-20 md:top-24 left-6 md:left-12 lg:left-20 z-40 font-body text-[0.65rem] md:text-xs uppercase tracking-[0.3em] text-marron max-w-[55%] md:max-w-none">
         Content creator <span className="opacity-60">&</span> Social Media Manager
       </p>
 
-      {/* Center block: Francesca → photo → Torres (sandwich) */}
-      <div className="relative flex-1 grid grid-rows-[auto_1fr_auto] items-center justify-items-center px-4">
-        {/* Francesca */}
-        <span className="font-script text-burdeos leading-[0.85] text-[15vw] md:text-[12vw] lg:text-[11vw] -mb-[2vw] md:-mb-[3vw] z-20 select-none whitespace-nowrap">
-          Francesca
-        </span>
+      {/* Main grid: bio | photo+names | stats */}
+      <div className="flex-1 grid grid-cols-12 gap-4 md:gap-8 px-6 md:px-10 lg:px-16 pb-20 md:pb-16 items-center">
 
-        {/* Photo centered between names */}
-        <div className="relative z-10 flex items-center justify-center w-full">
-          <Image
-            src="/images/fotos/portada_nofondo.webp"
-            alt="Francesca Torres"
-            width={873}
-            height={1800}
-            priority
-            sizes="(min-width: 1024px) 19rem, (min-width: 768px) 16rem, 13rem"
-            className="w-52 sm:w-60 md:w-64 lg:w-[19rem] h-auto object-contain drop-shadow-[0_25px_35px_rgba(115,67,79,0.18)]"
-          />
+        {/* Left: bio (desktop) */}
+        <aside className="hidden md:flex md:col-span-3 flex-col mt-12 lg:mt-20">
+          <p className="font-body text-[0.7rem] uppercase tracking-[0.3em] text-crimson mb-3">
+            {about.title}
+          </p>
+          <p className="font-body text-sm text-marron/85 leading-relaxed max-w-[18rem]">
+            {about.bio[0]}
+          </p>
+        </aside>
+
+        {/* Center: photo + names sandwich (names BELOW photo) */}
+        <div className="col-span-12 md:col-span-6 relative flex flex-col items-center justify-end min-h-[58vh] md:min-h-[72vh]">
+          {/* Photo on top */}
+          <div className="relative z-20 w-56 sm:w-64 md:w-72 lg:w-[22rem]">
+            <Image
+              src="/images/fotos/portada_nofondo.webp"
+              alt="Francesca Torres"
+              width={873}
+              height={1800}
+              priority
+              sizes="(min-width: 1024px) 22rem, (min-width: 768px) 18rem, 14rem"
+              className="w-full h-auto object-contain drop-shadow-[0_25px_35px_rgba(115,67,79,0.18)]"
+            />
+          </div>
+          {/* Names overlapping bottom of photo */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center leading-[0.78] z-10 pointer-events-none select-none">
+            <span className="font-script text-burdeos text-[20vw] md:text-[15vw] lg:text-[13vw] whitespace-nowrap -mb-[0.12em]">
+              Francesca
+            </span>
+            <span className="font-script text-crimson text-[20vw] md:text-[15vw] lg:text-[13vw] whitespace-nowrap md:translate-x-8 lg:translate-x-14">
+              Torres
+            </span>
+          </div>
         </div>
 
-        {/* Torres (offset right for Ana Rodd effect) */}
-        <span className="font-script text-crimson leading-[0.85] text-[15vw] md:text-[12vw] lg:text-[11vw] -mt-[3vw] md:-mt-[4vw] md:translate-x-[8vw] lg:translate-x-[10vw] z-20 select-none whitespace-nowrap">
-          Torres
-        </span>
-      </div>
+        {/* Right: stats vertical (desktop) */}
+        <aside className="hidden md:flex md:col-span-3 flex-col gap-6 lg:gap-8 items-end mt-12 lg:mt-20">
+          {about.stats.map((s) => (
+            <div key={s.label} className="text-right">
+              <span className="block font-heading text-3xl lg:text-4xl text-crimson leading-none">
+                {s.value}
+              </span>
+              <span className="font-body text-[0.65rem] md:text-xs text-marron/70 uppercase tracking-wider mt-1 block">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </aside>
 
-      {/* Bio + Stats integrated in normal flow */}
-      <div className="relative z-20 px-6 md:px-12 lg:px-20 pb-20 md:pb-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end">
-          <div className="md:col-span-6 lg:col-span-5">
-            <p className="font-body text-[0.7rem] uppercase tracking-[0.3em] text-crimson mb-3">
+        {/* Mobile-only: bio + stats below names */}
+        <div className="md:hidden col-span-12 mt-4 space-y-5">
+          <div>
+            <p className="font-body text-[0.65rem] uppercase tracking-[0.3em] text-crimson mb-2">
               {about.title}
             </p>
-            <p className="font-body text-sm lg:text-[0.95rem] text-marron/85 leading-relaxed max-w-md">
+            <p className="font-body text-sm text-marron/85 leading-relaxed">
               {about.bio[0]}
             </p>
           </div>
-          <div className="md:col-span-6 lg:col-span-7 flex justify-start md:justify-end gap-8 md:gap-10 lg:gap-14">
+          <div className="flex justify-between gap-3">
             {about.stats.map((s) => (
-              <div key={s.label} className="text-left md:text-right">
-                <span className="block font-heading text-3xl md:text-4xl lg:text-5xl text-crimson leading-none">
+              <div key={s.label} className="text-center">
+                <span className="block font-heading text-2xl text-crimson leading-none">
                   {s.value}
                 </span>
-                <span className="font-body text-[0.65rem] md:text-xs text-marron/70 uppercase tracking-wider mt-1 block">
+                <span className="font-body text-[0.6rem] text-marron/70 uppercase tracking-wider mt-1 block">
                   {s.label}
                 </span>
               </div>
@@ -68,10 +93,10 @@ export default function Hero() {
       </div>
 
       {/* Bottom-right contact */}
-      <div className="absolute bottom-6 md:bottom-8 right-6 md:right-12 lg:right-20 z-30 flex items-center gap-3">
+      <div className="absolute bottom-5 md:bottom-7 right-6 md:right-12 lg:right-20 z-40 flex items-center gap-3">
         <a
           href={`mailto:${contact.email}`}
-          className="hidden sm:flex items-center gap-2 font-body text-xs text-marron hover:text-crimson transition-colors"
+          className="hidden lg:flex items-center gap-2 font-body text-xs text-marron hover:text-crimson transition-colors"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
