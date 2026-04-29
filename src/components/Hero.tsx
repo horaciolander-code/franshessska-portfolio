@@ -67,29 +67,6 @@ export default function Hero() {
           ))}
         </aside>
 
-        {/* Mobile-only: bio + stats below names */}
-        <div className="md:hidden col-span-12 mt-4 space-y-5">
-          <div>
-            <p className="font-body text-[0.65rem] uppercase tracking-[0.3em] text-crimson mb-2">
-              {about.title}
-            </p>
-            <p className="font-body text-sm text-marron/85 leading-relaxed">
-              {about.bio[0]}
-            </p>
-          </div>
-          <div className="flex justify-between gap-3">
-            {about.stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <span className="block font-heading text-2xl text-crimson leading-none">
-                  {s.value}
-                </span>
-                <span className="font-body text-[0.6rem] text-marron/70 uppercase tracking-wider mt-1 block">
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Bottom-right contact */}
