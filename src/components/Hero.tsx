@@ -4,6 +4,8 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { social, contact, about } from "@/data/content";
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export default function Hero() {
   return (
     <section
@@ -16,22 +18,61 @@ export default function Hero() {
       <motion.p
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        transition={{ duration: 0.8, ease, delay: 0.1 }}
         className="absolute top-20 sm:top-24 left-5 sm:left-8 md:left-12 lg:left-20 z-40 font-body uppercase tracking-[0.3em] text-marron max-w-[60%] md:max-w-none"
         style={{ fontSize: "var(--hero-role)" }}
       >
         Content creator <span className="opacity-60">&</span> Social Media Manager
       </motion.p>
 
-      {/* Main grid: bio (left) | photo + names (center) | stats (right) */}
-      <div className="flex-1 grid grid-cols-12 gap-4 md:gap-8 px-5 sm:px-8 md:px-12 lg:px-16 pt-32 sm:pt-36 md:pt-28 pb-24 md:pb-20 items-center">
+      {/* ===== MOBILE LAYOUT: photo on top, names BELOW (fully visible) ===== */}
+      <div className="md:hidden flex-1 flex flex-col items-center justify-end pt-32 pb-32 px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.1, ease, delay: 0.2 }}
+          className="relative z-20 w-[60vw] max-w-[16rem]"
+        >
+          <Image
+            src="/images/fotos/portada_nofondo.webp"
+            alt="Francesca Torres"
+            width={873}
+            height={1800}
+            priority
+            sizes="60vw"
+            className="w-full h-auto object-contain drop-shadow-[0_18px_28px_rgba(115,67,79,0.18)]"
+          />
+        </motion.div>
 
-        {/* Desktop bio left */}
+        <div className="flex flex-col items-center leading-[0.78] -mt-3 select-none pointer-events-none">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, ease, delay: 0.45 }}
+            className="font-script text-burdeos text-[26vw] whitespace-nowrap -mb-[0.18em]"
+          >
+            Francesca
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, ease, delay: 0.65 }}
+            className="font-script text-crimson text-[26vw] whitespace-nowrap translate-x-4"
+          >
+            Torres
+          </motion.span>
+        </div>
+      </div>
+
+      {/* ===== DESKTOP LAYOUT: bio | photo+names sandwich | stats ===== */}
+      <div className="hidden md:grid flex-1 grid-cols-12 gap-8 px-12 lg:px-16 pt-28 pb-20 items-center">
+
+        {/* Bio left */}
         <motion.aside
           initial={{ opacity: 0, x: -16 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
-          className="hidden md:flex md:col-span-3 flex-col mt-12 lg:mt-20"
+          transition={{ duration: 1, ease, delay: 0.6 }}
+          className="col-span-3 flex flex-col mt-12 lg:mt-20"
         >
           <p className="font-body text-[0.7rem] uppercase tracking-[0.3em] text-crimson mb-3">
             {about.title}
@@ -42,12 +83,11 @@ export default function Hero() {
         </motion.aside>
 
         {/* Center: photo + names sandwich */}
-        <div className="col-span-12 md:col-span-6 relative flex flex-col items-center justify-end min-h-[55svh] md:min-h-[72vh]">
-          {/* Photo */}
+        <div className="col-span-6 relative flex flex-col items-center justify-end min-h-[72vh]">
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            transition={{ duration: 1.1, ease, delay: 0.2 }}
             className="relative z-20"
             style={{ width: "var(--hero-photo)" }}
           >
@@ -57,19 +97,16 @@ export default function Hero() {
               width={873}
               height={1800}
               priority
-              sizes="(min-width: 1024px) 22rem, (min-width: 768px) 18rem, 55vw"
+              sizes="(min-width: 1024px) 22rem, 18rem"
               className="w-full h-auto object-contain drop-shadow-[0_25px_35px_rgba(115,67,79,0.18)]"
             />
           </motion.div>
 
-          {/* Names overlapping bottom of photo */}
-          <div
-            className="absolute bottom-[8%] md:bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center leading-[0.78] z-10 pointer-events-none select-none"
-          >
+          <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center leading-[0.78] z-10 pointer-events-none select-none">
             <motion.span
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.45 }}
+              transition={{ duration: 1.2, ease, delay: 0.45 }}
               className="font-script text-burdeos whitespace-nowrap -mb-[0.18em]"
               style={{ fontSize: "var(--hero-name)" }}
             >
@@ -78,8 +115,8 @@ export default function Hero() {
             <motion.span
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.65 }}
-              className="font-script text-crimson whitespace-nowrap md:translate-x-12 lg:translate-x-20"
+              transition={{ duration: 1.2, ease, delay: 0.65 }}
+              className="font-script text-crimson whitespace-nowrap translate-x-12 lg:translate-x-20"
               style={{ fontSize: "var(--hero-name)" }}
             >
               Torres
@@ -87,19 +124,19 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Desktop stats right */}
+        {/* Stats right */}
         <motion.aside
           initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
-          className="hidden md:flex md:col-span-3 flex-col gap-6 lg:gap-8 items-end mt-12 lg:mt-20"
+          transition={{ duration: 1, ease, delay: 0.7 }}
+          className="col-span-3 flex flex-col gap-6 lg:gap-8 items-end mt-12 lg:mt-20"
         >
           {about.stats.map((s) => (
             <div key={s.label} className="text-right">
               <span className="block font-heading text-crimson leading-none" style={{ fontSize: "var(--about-stat)" }}>
                 {s.value}
               </span>
-              <span className="font-body text-[0.65rem] md:text-xs text-marron/70 uppercase tracking-wider mt-1 block">
+              <span className="font-body text-xs text-marron/70 uppercase tracking-wider mt-1 block">
                 {s.label}
               </span>
             </div>
@@ -117,11 +154,11 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Bottom-right contact (44px touch targets) */}
+      {/* Bottom-right contact */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.9 }}
+        transition={{ duration: 0.8, ease, delay: 0.9 }}
         className="absolute bottom-5 md:bottom-7 right-5 sm:right-8 md:right-12 lg:right-20 z-40 flex items-center gap-2.5"
       >
         <a
