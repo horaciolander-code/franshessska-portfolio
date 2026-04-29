@@ -13,7 +13,6 @@ export const siteConfig = {
 
 export const nav = {
   links: [
-    { text: "Sobre mí", href: "#about" },
     { text: "Servicios", href: "#services" },
     { text: "Portfolio", href: "#portfolio" },
     { text: "Material", href: "#material" },
@@ -278,7 +277,6 @@ export const footer = {
   copyright: `${new Date().getFullYear()} Francesca Torres. Todos los derechos reservados.`,
   links: [
     { text: "Inicio", href: "#hero" },
-    { text: "Sobre mí", href: "#about" },
     { text: "Servicios", href: "#services" },
     { text: "Portfolio", href: "#portfolio" },
     { text: "Contacto", href: "#contact" },
