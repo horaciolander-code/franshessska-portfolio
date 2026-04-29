@@ -8,6 +8,37 @@
   --color-crema: #E8DDD4;
   --color-rosa: #BF9288;
   --color-marron: #8C5858;
+
+  /* Fluid typography scale — smooth scaling across all viewports */
+  --hero-name: clamp(5rem, 28vw, 22rem);
+  --hero-photo: clamp(13rem, 55vw, 24rem);
+  --hero-role: clamp(0.65rem, 1vw, 0.85rem);
+  --about-bio: clamp(0.875rem, 1.1vw, 1.125rem);
+  --about-stat: clamp(1.75rem, 3.5vw, 3rem);
+
+  /* Spacing & motion tokens */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Subtle scroll indicator bounce */
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.animate-scroll-hint {
+  animation: scroll-hint 2s var(--ease-out-soft) infinite;
 }
 
 html {
