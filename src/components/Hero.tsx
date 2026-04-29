@@ -42,12 +42,12 @@ export default function Hero() {
               className="w-full h-auto object-contain drop-shadow-[0_25px_35px_rgba(115,67,79,0.18)]"
             />
           </div>
-          {/* Names overlapping bottom of photo */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center leading-[0.78] z-10 pointer-events-none select-none">
-            <span className="font-script text-burdeos text-[20vw] md:text-[15vw] lg:text-[13vw] whitespace-nowrap -mb-[0.12em]">
+          {/* Names overlapping bottom of photo - HUGE so they extend well beyond her silhouette */}
+          <div className="absolute bottom-[8%] md:bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center leading-[0.78] z-10 pointer-events-none select-none">
+            <span className="font-script text-burdeos text-[32vw] md:text-[24vw] lg:text-[22vw] whitespace-nowrap -mb-[0.18em]">
               Francesca
             </span>
-            <span className="font-script text-crimson text-[20vw] md:text-[15vw] lg:text-[13vw] whitespace-nowrap md:translate-x-8 lg:translate-x-14">
+            <span className="font-script text-crimson text-[32vw] md:text-[24vw] lg:text-[22vw] whitespace-nowrap md:translate-x-12 lg:translate-x-20">
               Torres
             </span>
           </div>
