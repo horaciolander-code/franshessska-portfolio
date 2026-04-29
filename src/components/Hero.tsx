@@ -5,61 +5,61 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen bg-crema overflow-hidden"
+      className="relative min-h-screen flex flex-col bg-crema overflow-hidden pt-24 md:pt-28"
     >
+      {/* Accessibility */}
+      <h1 className="sr-only">Francesca Torres</h1>
+
       {/* Top-left role */}
-      <p className="absolute top-24 md:top-28 left-6 md:left-12 lg:left-20 font-body text-[0.7rem] md:text-xs uppercase tracking-[0.35em] text-marron z-30 max-w-[60%] md:max-w-none">
+      <p className="absolute top-24 md:top-28 left-6 md:left-12 lg:left-20 z-30 font-body text-[0.7rem] md:text-xs uppercase tracking-[0.35em] text-marron max-w-[60%] md:max-w-none">
         Content creator <span className="opacity-60">&</span> Social Media Manager
       </p>
 
-      {/* Giant script name behind everything */}
-      <h1
-        aria-label="Francesca Torres"
-        className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none select-none z-0 leading-[0.8]"
-      >
-        <span className="font-script text-burdeos whitespace-nowrap text-[18vw] md:text-[14vw] lg:text-[13vw]">
+      {/* Center block: Francesca → photo → Torres (sandwich) */}
+      <div className="relative flex-1 grid grid-rows-[auto_1fr_auto] items-center justify-items-center px-4">
+        {/* Francesca */}
+        <span className="font-script text-burdeos leading-[0.85] text-[15vw] md:text-[12vw] lg:text-[11vw] -mb-[2vw] md:-mb-[3vw] z-20 select-none whitespace-nowrap">
           Francesca
         </span>
-        <span className="font-script text-crimson whitespace-nowrap text-[18vw] md:text-[14vw] lg:text-[13vw] -mt-[0.35em] md:translate-x-10 lg:translate-x-16">
+
+        {/* Photo centered between names */}
+        <div className="relative z-10 flex items-center justify-center w-full">
+          <Image
+            src="/images/fotos/portada_nofondo.webp"
+            alt="Francesca Torres"
+            width={873}
+            height={1800}
+            priority
+            sizes="(min-width: 1024px) 19rem, (min-width: 768px) 16rem, 13rem"
+            className="w-52 sm:w-60 md:w-64 lg:w-[19rem] h-auto object-contain drop-shadow-[0_25px_35px_rgba(115,67,79,0.18)]"
+          />
+        </div>
+
+        {/* Torres (offset right for Ana Rodd effect) */}
+        <span className="font-script text-crimson leading-[0.85] text-[15vw] md:text-[12vw] lg:text-[11vw] -mt-[3vw] md:-mt-[4vw] md:translate-x-[8vw] lg:translate-x-[10vw] z-20 select-none whitespace-nowrap">
           Torres
         </span>
-      </h1>
-
-      {/* Centered photo (smaller) */}
-      <div className="relative z-10 min-h-screen flex items-end justify-center pt-32 pb-48 md:pb-56">
-        <Image
-          src="/images/fotos/portada_nofondo.webp"
-          alt="Francesca Torres"
-          width={873}
-          height={1800}
-          priority
-          sizes="(min-width: 1024px) 22rem, (min-width: 768px) 18rem, 14rem"
-          className="w-56 sm:w-64 md:w-72 lg:w-[22rem] h-auto object-contain drop-shadow-[0_20px_30px_rgba(115,67,79,0.15)]"
-        />
       </div>
 
-      {/* Bio + stats integrated at the bottom */}
-      <div className="absolute bottom-28 md:bottom-32 left-0 right-0 z-20 px-6 md:px-12 lg:px-20">
+      {/* Bio + Stats integrated in normal flow */}
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pb-20 md:pb-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end">
-          {/* Bio */}
-          <div className="md:col-span-5 hidden md:block">
-            <p className="font-body text-xs uppercase tracking-[0.3em] text-crimson mb-3">
+          <div className="md:col-span-6 lg:col-span-5">
+            <p className="font-body text-[0.7rem] uppercase tracking-[0.3em] text-crimson mb-3">
               {about.title}
             </p>
-            <p className="font-body text-sm lg:text-base text-marron/85 leading-relaxed max-w-md">
+            <p className="font-body text-sm lg:text-[0.95rem] text-marron/85 leading-relaxed max-w-md">
               {about.bio[0]}
             </p>
           </div>
-
-          {/* Stats */}
-          <div className="md:col-span-7 flex justify-center md:justify-end gap-8 md:gap-12">
-            {about.stats.map((stat) => (
-              <div key={stat.label} className="text-center md:text-right">
-                <span className="block font-heading text-2xl md:text-3xl lg:text-4xl text-crimson leading-none">
-                  {stat.value}
+          <div className="md:col-span-6 lg:col-span-7 flex justify-start md:justify-end gap-8 md:gap-10 lg:gap-14">
+            {about.stats.map((s) => (
+              <div key={s.label} className="text-left md:text-right">
+                <span className="block font-heading text-3xl md:text-4xl lg:text-5xl text-crimson leading-none">
+                  {s.value}
                 </span>
-                <span className="font-body text-[0.65rem] md:text-xs text-marron/70 uppercase tracking-wider">
-                  {stat.label}
+                <span className="font-body text-[0.65rem] md:text-xs text-marron/70 uppercase tracking-wider mt-1 block">
+                  {s.label}
                 </span>
               </div>
             ))}
@@ -98,6 +98,17 @@ export default function Hero() {
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48v-7.15a8.16 8.16 0 005.58 2.2V11.3a4.85 4.85 0 01-3.77-1.84V6.69h3.77z" />
+          </svg>
+        </a>
+        <a
+          href={social.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="w-8 h-8 rounded-full bg-marron text-crema flex items-center justify-center hover:bg-crimson transition-colors"
+        >
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
           </svg>
         </a>
       </div>

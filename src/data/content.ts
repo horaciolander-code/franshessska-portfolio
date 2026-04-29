@@ -248,7 +248,7 @@ export const contact = {
   subtitle: "Agenda una demo gratuita o escríbeme directamente",
   image: "/images/fotos/contactame.webp",
   calendarUrl: "PENDIENTE",
-  email: "hola@franshessska.com",
+  email: "francescatorresg0809@gmail.com",
   form: {
     namePlaceholder: "Tu nombre",
     companyPlaceholder: "Empresa / Proyecto",
@@ -268,9 +268,9 @@ export const contact = {
 };
 
 export const social = {
-  instagram: "https://instagram.com/franshessska",
-  tiktok: "https://tiktok.com/@franshessska",
-  linkedin: "https://linkedin.com/in/franshessska",
+  instagram: "https://www.instagram.com/francescaa.torres",
+  tiktok: "https://www.tiktok.com/@francescaa.torresg",
+  linkedin: "https://www.linkedin.com/in/francesca-torres-",
 };
 
 export const footer = {
