@@ -12,7 +12,7 @@ export default function Hero() {
       id="hero"
       className="relative min-h-[100svh] flex flex-col bg-crema overflow-hidden"
     >
-      <h1 className="sr-only">Francesca Torres — Content Creator & Social Media Manager</h1>
+      <h1 className="sr-only">Francesca — Content Creator & Social Media Manager</h1>
 
       {/* Top-left role */}
       <motion.p
@@ -25,43 +25,34 @@ export default function Hero() {
         Content creator <span className="opacity-60">&</span> Social Media Manager
       </motion.p>
 
-      {/* ===== MOBILE LAYOUT: photo on top, names BELOW (fully visible) ===== */}
-      <div className="md:hidden flex-1 flex flex-col items-center justify-end pt-32 pb-32 px-4">
+      {/* ===== MOBILE LAYOUT: name OVER neck/shoulders of photo ===== */}
+      <div className="md:hidden flex-1 relative flex flex-col items-center justify-end pt-32 pb-24 px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.96, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.1, ease, delay: 0.2 }}
-          className="relative z-20 w-[60vw] max-w-[16rem]"
+          className="relative z-20 w-[68vw] max-w-[18rem]"
         >
           <Image
             src="/images/fotos/portada_nofondo.webp"
-            alt="Francesca Torres"
+            alt="Francesca"
             width={873}
             height={1800}
             priority
-            sizes="60vw"
+            sizes="68vw"
             className="w-full h-auto object-contain drop-shadow-[0_18px_28px_rgba(115,67,79,0.18)]"
           />
         </motion.div>
 
-        <div className="flex flex-col items-center leading-[0.78] -mt-3 select-none pointer-events-none">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, ease, delay: 0.45 }}
-            className="font-script text-burdeos text-[26vw] whitespace-nowrap -mb-[0.18em]"
-          >
-            Francesca
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, ease, delay: 0.65 }}
-            className="font-script text-crimson text-[26vw] whitespace-nowrap translate-x-4"
-          >
-            Torres
-          </motion.span>
-        </div>
+        {/* Name absolute over the neck/shoulders area */}
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, ease, delay: 0.45 }}
+          className="absolute top-[28%] left-1/2 -translate-x-1/2 z-10 font-script text-burdeos text-[34vw] leading-[0.78] whitespace-nowrap select-none pointer-events-none"
+        >
+          Francesca
+        </motion.span>
       </div>
 
       {/* ===== DESKTOP LAYOUT: bio | photo+names sandwich | stats ===== */}
@@ -82,7 +73,7 @@ export default function Hero() {
           </p>
         </motion.aside>
 
-        {/* Center: photo + names sandwich */}
+        {/* Center: photo + name over neck/shoulders */}
         <div className="col-span-6 relative flex flex-col items-center justify-end min-h-[72vh]">
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 12 }}
@@ -93,7 +84,7 @@ export default function Hero() {
           >
             <Image
               src="/images/fotos/portada_nofondo.webp"
-              alt="Francesca Torres"
+              alt="Francesca"
               width={873}
               height={1800}
               priority
@@ -102,26 +93,15 @@ export default function Hero() {
             />
           </motion.div>
 
-          <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center leading-[0.78] z-10 pointer-events-none select-none">
-            <motion.span
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease, delay: 0.45 }}
-              className="font-script text-burdeos whitespace-nowrap -mb-[0.18em]"
-              style={{ fontSize: "var(--hero-name)" }}
-            >
-              Francesca
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease, delay: 0.65 }}
-              className="font-script text-crimson whitespace-nowrap translate-x-12 lg:translate-x-20"
-              style={{ fontSize: "var(--hero-name)" }}
-            >
-              Torres
-            </motion.span>
-          </div>
+          <motion.span
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease, delay: 0.45 }}
+            className="absolute top-[22%] left-1/2 -translate-x-1/2 font-script text-burdeos whitespace-nowrap leading-[0.78] z-10 pointer-events-none select-none"
+            style={{ fontSize: "var(--hero-name)" }}
+          >
+            Francesca
+          </motion.span>
         </div>
 
         {/* Stats right */}
